@@ -4,10 +4,25 @@ Named after Samwise Gamgee — the loyal companion who carries the mission forwa
 
 ---
 
+## Installation
+
+```bash
+# Clone to home directory
+cd ~ && git clone https://github.com/krispuckett/sam.git
+
+# Install the Claude Code skill
+cp ~/sam/sam-skill.md ~/.claude/commands/sam.md
+
+# (Optional) Install Raycast extension
+cd ~/sam/raycast-extension && npm install && npm run dev
+```
+
+---
+
 ## Quick Start
 
 ```bash
-# Open today's briefing
+# Open today's briefing (via /sam in Claude Code)
 sam
 
 # Run 1:1 prep
