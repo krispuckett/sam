@@ -4,18 +4,24 @@ Named after Samwise Gamgee — the loyal companion who carries the mission forwa
 
 ---
 
-## Installation
+## Installation (Stripe Machine)
 
 ```bash
 # Clone to home directory
 cd ~ && git clone https://github.com/krispuckett/sam.git
 
-# Install the Claude Code skill
+# Set up automatic context loading (like Watchtower on personal machine)
+cp ~/sam/CLAUDE.md ~/.claude/CLAUDE.md
+
+# Install the skill for /sam commands
 cp ~/sam/sam-skill.md ~/.claude/commands/sam.md
 
-# (Optional) Install Raycast extension
-cd ~/sam/raycast-extension && npm install && npm run dev
+# Install research-agent skill
+mkdir -p ~/.claude/skills/research-agent
+cp ~/sam/skills/research-agent.md ~/.claude/skills/research-agent/SKILL.md
 ```
+
+Now Claude Code will load Sam context automatically every session.
 
 ---
 
