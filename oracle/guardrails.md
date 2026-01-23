@@ -1,105 +1,90 @@
-# Work Guardrails
+# Guardrails
 
-These are if-then rules for managing yourself at Stripe.
+*If-Then rules from retrospectives. Your personal operating principles.*
 
----
+## Time-Based Rules
 
-## Energy Management
+**IF** it's after 10:30pm and I'm still working
+**THEN** close laptop, begin wind-down
+**INSTEAD OF** "just 20 more minutes" that becomes midnight
 
-**IF** energy is Red **THEN** only do:
-- Required meetings (can't reschedule)
-- Inbox triage
-- No feedback delivery, no hard conversations
-- Flag to manager if multiple Red days
+**IF** it's Friday evening and food decisions arise
+**THEN** pause and remember weekend pattern
+**INSTEAD OF** unconscious caloric reset
 
-**IF** energy is Yellow **THEN**:
-- Do ONE important thing, protect it
-- Don't schedule additional 1:1s
-- Keep conversations shorter
-- It's okay to be quieter than usual
+**IF** I've gone 48+ hours without closing the daily loop
+**THEN** stop and debrief before continuing
+**INSTEAD OF** accumulating unprocessed days
 
-**IF** energy is Green **THEN**:
-- Load up the calendar if needed
-- Have the hard conversations
-- Do deep critique work
-- Invest in relationships
+## Energy-Based Rules
 
----
+**IF** I'm planning gym for evening
+**THEN** reschedule to morning or accept it won't happen
+**INSTEAD OF** optimistic evening plans that fail
 
-## Meetings
+**IF** I notice the 2pm energy dip + pull toward darkness
+**THEN** walk, cold water, or text someone
+**INSTEAD OF** the 60-90 min pattern
 
-**IF** a meeting has no agenda **THEN** ask for one before accepting.
+## Health-Based Rules
 
-**IF** you're in a meeting and unclear why **THEN** ask: "What do you need from me here?"
+**IF** HRV < 30
+**THEN** lighter load, no training
+**INSTEAD OF** pushing through
 
-**IF** you're double-booked **THEN** prioritize: reports > stakeholders > general.
+**IF** sleep < 6hrs
+**THEN** light tasks only
+**INSTEAD OF** deep work expectations
 
-**IF** Friday afternoon has meetings **THEN** try to move them (protect review time).
+**IF** missed iron 3+ days
+**THEN** reminder and recommit
+**INSTEAD OF** letting protocol slip
 
----
+## Learning-Based Rules
 
-## Feedback
+**IF** learning session requires sustained attention (slides, talks, training)
+**THEN** externalize: take messy notes, write questions, sketch connections
+**INSTEAD OF** passive consumption that triggers internal processing mode
 
-**IF** you notice something worth feedback **THEN** note it immediately (don't trust memory).
+**IF** content doesn't intrinsically interest me
+**THEN** hunt for one useful idea to apply this week
+**INSTEAD OF** waiting for the material to earn my attention
 
-**IF** feedback is critical **THEN** deliver in 1:1, not in group settings.
+**IF** I notice I've zoned out
+**THEN** write down the last thing I remember + a question
+**INSTEAD OF** pretending I'm following or self-judgment spiral
 
-**IF** you're unsure whether to give feedback **THEN** ask: "Would I want to know this?"
+**IF** long session (45+ min)
+**THEN** every 15 min, write one sentence summary of what just happened
+**INSTEAD OF** letting attention drift unchecked
 
-**IF** feedback has been sitting more than a week **THEN** you're avoiding it. Deliver it.
+## Pattern-Based Rules
 
----
+**IF** same task rolled 3+ times
+**THEN** investigate blocker
+**INSTEAD OF** keep rolling it
 
-## Team Health
+**IF** darkness pattern detected
+**THEN** log and surface
+**INSTEAD OF** hide and shame
 
-**IF** a report seems off two meetings in a row **THEN** name it directly.
-
-**IF** you don't know how someone is really doing **THEN** you haven't asked the right question yet.
-
-**IF** someone is struggling and you feel the urge to solve it **THEN** pause. Ask first.
-
-**IF** tension exists between reports **THEN** don't triangulate. Get them in a room.
-
----
-
-## Stakeholders
-
-**IF** you haven't talked to your manager in 5+ days **THEN** send an async update.
-
-**IF** cross-functional friction emerges **THEN** address it directly, don't complain sideways.
-
-**IF** you need something from someone you don't know **THEN** find a warm intro or coffee chat first.
-
----
-
-## Scope & Boundaries
-
-**IF** asked to do IC work **THEN** ask: "Is this a gap I should fill, or a gap we should hire for?"
-
-**IF** you're doing work your reports should do **THEN** stop and delegate.
-
-**IF** a project seems too big **THEN** break it down before panicking.
-
-**IF** you're spending >50% of time on non-team work **THEN** something is wrong.
+**IF** gym avoided 7+ days
+**THEN** gentle check-in
+**INSTEAD OF** pretend it's fine
 
 ---
 
-## First 90 Days Specific
+## Derailers Assessment (Goldsmith's 20 Habits)
 
-**IF** urge to change something arises in Days 1-30 **THEN** write it down, don't act.
+### My Top 3 Derailers
+1. **Adding too much value** - tendency to improve others' ideas rather than letting them own it
+2. **Not listening** - processing internally while appearing disengaged
+3. **Clinging to the past** - Shopify narrative still influencing self-perception
 
-**IF** you don't understand something **THEN** ask. No one expects you to know yet.
-
-**IF** you feel behind **THEN** you're not. You're on schedule. Learning is the job.
-
-**IF** someone tests you early **THEN** stay calm, be clear, don't overreact.
+### Active Experiments
+[To be tracked via immunity maps]
 
 ---
 
-## Emergency
-
-**IF** you're completely overwhelmed **THEN** talk to your manager same day.
-
-**IF** health crashes multiple days **THEN** communicate, don't hide.
-
-**IF** you need to say no **THEN** say no. You can explain why, but the no stands.
+*Last updated: 2026-01-20*
+*Migrated from Craft Oracle document*

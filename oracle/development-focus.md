@@ -1,67 +1,24 @@
-# 90-Day Development Focus
+# Development Focus
 
-**Period**: Days 1-90 (January 20 - April 19, 2026)
-**Review Date**: April 19, 2026
+*Your primary development area. Updated quarterly or when focus shifts.*
 
----
+## Current Focus
+**First 90 Days at Stripe** - Establishing presence, building relationships, demonstrating value without overextending
 
-## Primary Development Goals
+## Why This Matters
+Career validation after Shopify friction. Proof that the market recognized your value. This role funds independence while building toward it.
 
-### 1. Build Trust with Team
-**Why**: Can't manage effectively without it.
-**What good looks like**: Reports come to you with problems, not just status updates.
-**Evidence to track**:
-- [ ] Each report has shared something they're struggling with
-- [ ] Feedback is being received without defensiveness
-- [ ] You know each person's career goals
+## Success Looks Like
+- Strong relationships with skip-level and peers by Day 30
+- Clear understanding of team dynamics by Day 60
+- One visible win shipped by Day 90
+- NOT burning out trying to prove yourself
 
-### 2. Understand the Domain
-**Why**: Can't give useful feedback without context.
-**What good looks like**: You can explain Essential Journeys to a new hire.
-**Evidence to track**:
-- [ ] Completed domain glossary with 50+ terms
-- [ ] Can articulate why key design decisions were made
-- [ ] Gave feedback that referenced domain constraints accurately
-
-### 3. Establish Manager Relationship
-**Why**: This determines your runway and support.
-**What good looks like**: Manager gives you honest feedback and trusts your judgment.
-**Evidence to track**:
-- [ ] Know manager's top 3 priorities
-- [ ] Delivered on one thing manager cares about
-- [ ] Received constructive feedback (not just praise)
+## Timeline
+- Start date: January 19, 2026
+- 90-day checkpoint: April 19, 2026
 
 ---
 
-## Secondary Goals
-
-### 4. Map Stakeholder Landscape
-**What good looks like**: Know who matters, who's an ally, who to watch.
-
-### 5. Establish Personal Rhythm
-**What good looks like**: Sustainable cadence that doesn't burn you out.
-
----
-
-## Anti-Goals (What Not to Focus On)
-
-- Shipping major work (too early)
-- Changing processes (too early)
-- Being the expert (you're not, yet)
-- Proving yourself through IC work (different role now)
-
----
-
-## Check-in Schedule
-
-| Day | Focus | Questions to Ask |
-|-----|-------|------------------|
-| 30 | Learn | Do I understand the team? The domain? The dynamics? |
-| 60 | Align | Are my hypotheses validated? Quick wins identified? |
-| 90 | Build | Did I ship something? Is the rhythm sustainable? |
-
----
-
-## Notes
-
--
+*Last updated: 2025-01-08*
+*Migrated from Craft Oracle document*
