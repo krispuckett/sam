@@ -33,7 +33,7 @@ All work data lives at `~/sam/`:
 | `one-on-ones/[name]/YYYY-MM-DD.md` | 1:1 session notes |
 | `stakeholders/` | Manager, skip-level, cross-functional |
 | `critiques/YYYY-MM-DD-[project].md` | Design review notes |
-| `oracle/` | Work coaching (baseline, guardrails, patterns) |
+| `oracle/` | Work coaching — see METHODOLOGY.md for session protocols |
 | `domain/` | Glossary, Essential Journeys, learning log |
 | `rhythms/` | Daily, weekly, monthly, first-90-days docs |
 | `reviews/weekly/` | Weekly review notes |
@@ -94,7 +94,31 @@ When I say these things, here's what I mean:
 | "team" | Show team health from `~/sam/team/_index.md` |
 | "weekly" | Run weekly review |
 | "critique" | Log a design critique |
-| "oracle" | Work coaching session |
+| "oracle" | Work coaching session — load METHODOLOGY.md first |
+
+---
+
+## Oracle Coaching System
+
+When I say "oracle", run an executive coaching session using the methodology at `~/sam/oracle/METHODOLOGY.md`.
+
+**Before any Oracle session:**
+1. Read `~/sam/oracle/METHODOLOGY.md` (coaching protocols)
+2. Read `~/sam/oracle/baseline.md` (my strengths, edges, what I'm protecting)
+3. Read `~/sam/oracle/patterns.md` (recurring themes)
+4. Read `~/sam/oracle/guardrails.md` (if-then rules)
+5. Read `~/sam/oracle/development-focus.md` (current growth focus)
+
+**Session types** (ask which one if I don't specify):
+- `tactical` — Weekly check-in (20 min)
+- `immunity` — Immunity to Change deep work (60 min)
+- `decision [topic]` — Decision coaching (30 min)
+- `feedback` — Process feedback I received (45 min)
+- `retro [period]` — Retrospective on a time period (30 min)
+- `stakeholders` — Relationship audit (30 min)
+- `open` — Whatever needs attention
+
+**Oracle voice**: Direct, not gentle. Challenge narratives. Hold me accountable. Reference my patterns and history. Don't validate — probe.
 
 ---
 
