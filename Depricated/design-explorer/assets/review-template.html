@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Explorer — Review</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-hover: #1a1a1a;
+    --border: #222;
+    --border-active: #444;
+    --text: #e8e8e8;
+    --text-secondary: #888;
+    --text-tertiary: #555;
+    --accent: #e8a040;
+    --accent-dim: #e8a04033;
+    --selected: #2a4a2a;
+    --selected-border: #4a8a4a;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 15px; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header {
+    padding: 2rem 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  header h1 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  header h1 span { color: var(--text-tertiary); font-weight: 300; }
+  .view-toggle {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--surface);
+    border-radius: 6px;
+    padding: 3px;
+  }
+  .view-toggle button {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.35rem 0.75rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 150ms;
+  }
+  .view-toggle button.active {
+    background: var(--border);
+    color: var(--text);
+  }
+
+  .grid-view {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 1px;
+  }
+  .grid-card {
+    background: var(--surface);
+    cursor: pointer;
+    transition: background 150ms;
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .grid-card:hover { background: var(--surface-hover); }
+  .grid-card.selected { background: var(--selected); }
+  .grid-card.selected::after {
+    content: '\2713';
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--selected-border);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 2;
+  }
+
+  .grid-card .preview {
+    width: 100%;
+    height: 65%;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-card .preview iframe {
+    width: 200%;
+    height: 200%;
+    border: none;
+    transform: scale(0.5);
+    transform-origin: top left;
+    pointer-events: none;
+  }
+  .grid-card .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .grid-card .preview .placeholder {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-tertiary);
+  }
+
+  .grid-card .info {
+    padding: 0.75rem 1rem;
+  }
+  .grid-card .info .number {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.25rem;
+  }
+  .grid-card .info h3 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+  }
+  .grid-card .info p {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .detail-view {
+    display: none;
+    height: calc(100vh - 58px);
+  }
+  .detail-view.active { display: flex; }
+
+  .detail-sidebar {
+    width: 320px;
+    min-width: 320px;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 1.5rem;
+  }
+  .detail-sidebar .number {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .detail-sidebar h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  .detail-sidebar .concept {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-sidebar .axes {
+    margin-bottom: 1.5rem;
+  }
+  .detail-sidebar .axes h4 {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .axis-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin: 0 0.25rem 0.35rem 0;
+    color: var(--text-secondary);
+  }
+
+  .detail-sidebar .select-btn {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 150ms;
+    margin-top: 1rem;
+  }
+  .detail-sidebar .select-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .detail-sidebar .select-btn.selected {
+    border-color: var(--selected-border);
+    background: var(--selected);
+    color: #8f8;
+  }
+
+  .detail-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .detail-nav button {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 150ms;
+  }
+  .detail-nav button:hover {
+    border-color: var(--text-tertiary);
+    color: var(--text);
+  }
+
+  .detail-main {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+  }
+  .detail-main iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .detail-main .placeholder-large {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .summary-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 2.5rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(100%);
+    transition: transform 250ms ease;
+    z-index: 100;
+  }
+  .summary-bar.visible { transform: translateY(0); }
+  .summary-bar .count {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+  .summary-bar .count strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .summary-bar .export-btn {
+    padding: 0.5rem 1.25rem;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: opacity 150ms;
+  }
+  .summary-bar .export-btn:hover { opacity: 0.85; }
+
+  .kbd-hint {
+    position: fixed;
+    bottom: 0.75rem;
+    right: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+    z-index: 50;
+  }
+  .kbd-hint kbd {
+    display: inline-block;
+    padding: 0.1rem 0.35rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin: 0 0.1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Design Explorer <span>— __BRIEF_PLACEHOLDER__</span></h1>
+  <div class="view-toggle">
+    <button class="active" data-view="grid">Grid</button>
+    <button data-view="detail">Detail</button>
+  </div>
+</header>
+
+<div class="grid-view" id="gridView"></div>
+
+<div class="detail-view" id="detailView">
+  <div class="detail-sidebar" id="detailSidebar"></div>
+  <div class="detail-main" id="detailMain"></div>
+</div>
+
+<div class="summary-bar" id="summaryBar">
+  <span class="count"><strong id="selectedCount">0</strong> directions selected</span>
+  <button class="export-btn" onclick="exportSelections()">Export Selections</button>
+</div>
+
+<div class="kbd-hint" id="kbdHint">
+  <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> navigate &nbsp; <kbd>S</kbd> select &nbsp; <kbd>Esc</kbd> grid
+</div>
+
+<script>
+  // Replace __EXPLORATIONS_PLACEHOLDER__ with JSON array:
+  // [{ id, name, concept, axes: [...], preview: "path", previewType: "iframe"|"image" }]
+  const explorations = __EXPLORATIONS_PLACEHOLDER__;
+  const selected = new Set();
+  let currentView = 'grid';
+  let currentIndex = 0;
+
+  function renderGrid() {
+    const grid = document.getElementById('gridView');
+    grid.innerHTML = explorations.map((exp, i) => {
+      const num = String(i + 1).padStart(2, '0');
+      const total = String(explorations.length).padStart(2, '0');
+      let previewHTML;
+      if (exp.preview) {
+        previewHTML = exp.previewType === 'image'
+          ? '<img src="' + exp.preview + '" alt="' + exp.name + '">'
+          : '<iframe src="' + exp.preview + '" loading="lazy"></iframe>';
+      } else {
+        previewHTML = '<span class="placeholder">' + num + '</span>';
+      }
+      return '<div class="grid-card ' + (selected.has(exp.id) ? 'selected' : '') + '" data-index="' + i + '" onclick="openDetail(' + i + ')">'
+        + '<div class="preview">' + previewHTML + '</div>'
+        + '<div class="info">'
+        + '<div class="number">' + num + ' / ' + total + '</div>'
+        + '<h3>' + exp.name + '</h3>'
+        + '<p>' + exp.concept + '</p>'
+        + '</div></div>';
+    }).join('');
+  }
+
+  function renderDetail(index) {
+    currentIndex = index;
+    const exp = explorations[index];
+    const num = String(index + 1).padStart(2, '0');
+    const total = String(explorations.length).padStart(2, '0');
+    const sidebar = document.getElementById('detailSidebar');
+    const main = document.getElementById('detailMain');
+
+    let axesHTML = '';
+    exp.axes.forEach(function(a) { axesHTML += '<span class="axis-tag">' + a + '</span>'; });
+
+    sidebar.innerHTML = '<div class="number">' + num + ' / ' + total + '</div>'
+      + '<h2>' + exp.name + '</h2>'
+      + '<p class="concept">' + exp.concept + '</p>'
+      + '<div class="axes"><h4>Parametric Axes</h4>' + axesHTML + '</div>'
+      + '<button class="select-btn ' + (selected.has(exp.id) ? 'selected' : '') + '" onclick="toggleSelect(' + exp.id + ')">'
+      + (selected.has(exp.id) ? '\u2713 Selected' : 'Select for Development')
+      + '</button>'
+      + '<div class="detail-nav">'
+      + '<button onclick="navigate(-1)">\u2190 Prev</button>'
+      + '<button onclick="navigate(1)">Next \u2192</button>'
+      + '</div>';
+
+    if (exp.preview) {
+      main.innerHTML = exp.previewType === 'image'
+        ? '<img src="' + exp.preview + '" style="max-width:100%;max-height:100%;object-fit:contain;">'
+        : '<iframe src="' + exp.preview + '"></iframe>';
+    } else {
+      main.innerHTML = '<div class="placeholder-large">Preview not yet generated.<br>Run the exploration to see this direction.</div>';
+    }
+  }
+
+  function setView(view) {
+    currentView = view;
+    document.getElementById('gridView').style.display = view === 'grid' ? 'grid' : 'none';
+    document.getElementById('detailView').classList.toggle('active', view === 'detail');
+    document.querySelectorAll('.view-toggle button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.view === view);
+    });
+    if (view === 'detail') renderDetail(currentIndex);
+  }
+
+  function openDetail(index) { currentIndex = index; setView('detail'); }
+  function navigate(dir) {
+    currentIndex = (currentIndex + dir + explorations.length) % explorations.length;
+    renderDetail(currentIndex);
+  }
+
+  function toggleSelect(id) {
+    if (selected.has(id)) selected.delete(id); else selected.add(id);
+    updateSummary();
+    if (currentView === 'grid') renderGrid(); else renderDetail(currentIndex);
+  }
+
+  function updateSummary() {
+    document.getElementById('selectedCount').textContent = selected.size;
+    document.getElementById('summaryBar').classList.toggle('visible', selected.size > 0);
+  }
+
+  function exportSelections() {
+    var result = { selected: explorations.filter(function(e) { return selected.has(e.id); }), timestamp: new Date().toISOString() };
+    var blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'selected-directions.json'; a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || (e.key === 'g' && currentView === 'detail')) setView('grid');
+    if (currentView === 'detail') {
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+      if (e.key === 's' || e.key === 'S') toggleSelect(explorations[currentIndex].id);
+    }
+    if (currentView === 'grid' && (e.key === 'Enter' || e.key === 'ArrowRight')) openDetail(currentIndex);
+  });
+
+  document.querySelectorAll('.view-toggle button').forEach(function(btn) {
+    btn.addEventListener('click', function() { setView(btn.dataset.view); });
+  });
+
+  renderGrid();
+</script>
+</body>
+</html>
