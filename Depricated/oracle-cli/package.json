@@ -1,0 +1,43 @@
+{
+  "name": "oracle-cli",
+  "version": "3.0.0",
+  "description": "Elite AI executive coaching system — $20K/month coaching in your terminal",
+  "main": "dist/index.js",
+  "bin": {
+    "oracle": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/index.ts",
+    "dev": "tsx src/index.ts",
+    "oracle": "tsx src/index.ts"
+  },
+  "keywords": [
+    "coaching",
+    "executive",
+    "cli",
+    "ai"
+  ],
+  "author": "krispuckett",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0",
+    "@tavily/core": "^0.7.2",
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^13.1.0",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
+    "fast-glob": "^3.3.3",
+    "glob": "^11.0.2",
+    "gray-matter": "^4.0.3",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.12",
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
